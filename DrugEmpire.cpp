@@ -1,8 +1,9 @@
 //
 //  Drug Empire
 //
-//  Created by James Carter on 6/16/19.
+//  Created by James Carter and Myles Charlesworth on 6/18/19.
 //  Copyright © 2019 James Carter. All rights reserved.
+//  
 //
 #include <iostream>
 #include <string>
