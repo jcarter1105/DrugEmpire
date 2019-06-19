@@ -36,6 +36,7 @@ int main()
     int shroomsinventory;
     int heroininventory;
     int health;
+    int Damage;
     bool switchblade;
     bool handgun;
     bool ar15;
@@ -51,7 +52,9 @@ start:
     level = 1;
     money = 200;
     druginventory = 100;
+    weaponinventory = 1;
     health = 100;
+    damage = 5;
     debt = 5000;
 cityselect: //This is the part that sets the first city, but the more important part is that this is where the user gets the first variables assigned to them.
     cin.ignore();
@@ -104,7 +107,7 @@ mainmenu: //This is our main player menu.
     }else if(temp == 3) { //Review Your Inventory
         goto playerinventory;
     }else if(temp == 4) { //Gun Store
-        goto wip;
+        goto gunstore;
     }else if(temp == 5) { //Change Location
         goto wip;
     }else if(temp == 6) { //Buy Supplies
@@ -341,6 +344,15 @@ playerinventory:
     goto mainmenu;
 gunstore:
     system("clear");
+    cin.ignore();
+    cout << "Welcome to Dirk's Pawn Shop if you lost it \nsomeone probably stole it and sold it to me. \nWelcome to my Store.\n";
+     cout <<"\n";
+    cout << "Money: $" << money << "\nWeapon Inventory Space: " << weaponinventory;
+    cout << "\n1.) Swtichblade: $" << switchblade << "\n2.) Handgun: $" << handgun << "\n3.) AR-15 $" << ar15 << "\n4.) Grenade Laucher: $"<< grenadelauncher;
+    cin << temp
+    if (temp == 1)
+
+    }
 nextturn:
     cin.ignore();
     system("clear");
