@@ -1,4 +1,4 @@
-@@ -0,0 +1,554 @@
+
 //
 //  Drug Empire
 //
@@ -335,7 +335,7 @@ playerinventory:
     cin.ignore();
     cout << name << "'s Inventory\n" << "Spots left in Inventory: " << druginventory;
     cout << "\nDrugs:\n" << "Weed: " << weedinventory << "g's\n" << "Acid: " << acidinventory << " tabs\n" << "Cocaine: " << cocaineinventory << "g's\n" << "Heroin: " << heroininventory << "g's\n" << "Shrooms: " << shroomsinventory << "g's\n";
-    cout << "\nWeapons:\n" << 
+    cout << "\nWeapons:\n"; 
     cout << "Press Enter to go back to the Main Menu";
     cin.get();
     goto mainmenu;
