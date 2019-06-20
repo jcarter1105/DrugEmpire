@@ -36,10 +36,7 @@ int main()
     int shroomsinventory;
     int heroininventory;
     int health;
-    bool switchblade;
-    bool handgun;
-    bool ar15;
-    bool grenadelauncher;
+    int damage;
     //This is the begining of the game, or what people see when they first start our program
 start:
     system("clear");
@@ -104,7 +101,7 @@ mainmenu: //This is our main player menu.
     }else if(temp == 3) { //Review Your Inventory
         goto playerinventory;
     }else if(temp == 4) { //Gun Store
-        goto wip;
+        goto gunstore;
     }else if(temp == 5) { //Change Location
         goto wip;
     }else if(temp == 6) { //Buy Supplies
@@ -341,6 +338,128 @@ playerinventory:
     goto mainmenu;
 gunstore:
     system("clear");
+    cin.ignore();
+    cout << "Welcome to Dirk's Pawnshop where the motto is...\n" << "if you lost it someone probably stole it and sold it off to here";
+    cout << "\n";
+    cout << "Money: $" << money << "\nWeapon Inventory: " << weaponinventory;
+    cout << "\n1.) Switchblade: $" << 20 << "\n2.) Handgun: $" << 500 << "\n3.) AR-15: $" << 5000 << "\n4.) Grenade Launcher: $" << 20000;
+    cout << "\n";
+    cin >> temp;
+    if(temp == 1){
+        system("clear");
+        if (weaponinventory > 0){
+            cin.ignore();
+            cout << "\nYou already have a better weapon equiped\n" << "Press Enter to Continue";
+            cin.get();
+            goto gunstore;
+        }else{
+            if(money < 20){
+                cin.ignore();
+                cout << "\nnot enough money\n" << "Press Enter to Continue";
+                cin.get();
+                goto gunstore;
+            }else{
+                cin.ignore();
+                cout << "\n Switchblade added to your inventory." <<"\n Press Enter to Continue";
+                money = money - 20;
+                weaponinventory = 1;
+                damage = 20;
+                cin.get();
+            }
+        }                 
+    }else if(temp == 2){
+        system("clear");
+        if (weaponinventory > 1){
+            cin.ignore();
+            cout << "\nYou already have a better weapon equiped" << "\nPress Enter to Continue";
+            cin.get();
+            goto gunstore;
+        }else if (weaponinventory == 1){      
+            cin.ignore();
+            cout << "\nYou already have a this weapon equiped" << "\nPress Enter to Continue";
+            cin.get();
+            goto gunstore;
+        }else{
+            if (money < 500){
+                cin.ignore();
+                cout << "\nnot enough money\n" << "Press Enter to Continue";
+                cin.get();
+                goto gunstore;
+            }else{
+                cin.ignore();
+                cout << "\n Handgun added to your inventory." <<"\n Press Enter to Continue";
+                money = money - 500;
+                weaponinventory = 2;
+                damage = 50;
+                cin.get();
+                }
+            }
+    }else if (temp == 3){
+        system("clear");
+        if (weaponinventory > 2){
+            cin.ignore();
+            cout << "\nYou already have a better weapon equiped." << "\nPress Enter to Continue.";
+            cin.get();
+            goto gunstore;
+        }else if (weaponinventory == 2){
+            cin.ignore();
+            cout << "\nYou already have a this weapon equiped." << "\nPress Enter to Continue.";
+            cin.get();
+            goto gunstore;
+        }else{
+            if (money < 5000){
+                cin.ignore();
+                cout << "\nnot enough money" << "\nPress Enter to Continue";
+                cin.get();
+                goto gunstore;
+            }else{
+                cin.ignore();
+                cout << "\n AR-15 added to your inventory." <<"\n Press Enter to Continue";
+                money = money - 5000;
+                weaponinventory = 3;
+                damage = 500;
+                cin.get();
+            }
+        }
+        
+    }else if (temp == 4){
+        system("clear");
+        if (weaponinventory > 3)
+        {
+            cin.ignore();
+            cout << "\nYou already have a better weapon equiped." << "\nPress Enter to Continue.";
+            cin.get();
+            goto gunstore;
+        }else if(weaponinventory == 3){
+            cin.ignore();
+            cout << "\nYou already have a this weapon equiped." << "\nPress Enter to Continue.";
+            cin.get();
+            goto gunstore;
+        }else{
+            if (money < 20000)
+            {
+                cin.ignore();
+                cout << "\nnot enough money" << "\nPress Enter to Continue.";
+                cin.get();
+                goto gunstore;
+            }else{
+                cin.ignore();
+                cout << "\n Grenade Launcher added to your inventory." <<"\n Press Enter to Continue";
+                money = money - 20000;
+                weaponinventory = 4;
+                damage = 10000;
+                cin.get();
+            }
+        }
+    
+    }else{
+        system("clear");
+        cin.ignore();
+        cout << "unacceptable action" <<"\nPress Enter to Continue";
+        cin.get();
+        goto gunstore;
+    }
+    
 nextturn:
     cin.ignore();
     system("clear");
