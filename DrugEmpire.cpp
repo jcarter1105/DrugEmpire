@@ -63,7 +63,7 @@ cityselect: //This is the part that sets the first city, but the more important 
         shrooms = (rand() % 100) + 1;
         system("clear");
         cout << "Hello " << name << " Welcome to New York City!\n";
-        goto mainmenu;
+        goto playerselect;
     }else if(startcity == 2) {
         startcityname = "Washington DC";
         srand(time(NULL));
@@ -74,7 +74,7 @@ cityselect: //This is the part that sets the first city, but the more important 
         shrooms = (rand() % 100) + 1;
         system("clear");
         cout << "Hello " << name << " Welcome to Washington DC!\n";
-        goto mainmenu;
+        goto playerselect;
     }else if(startcity == 3) {
         startcityname = "San Diego";
         srand(time(NULL));
@@ -85,11 +85,152 @@ cityselect: //This is the part that sets the first city, but the more important 
         shrooms = (rand() % 100) + 1;
         system("clear");
         cout << "Hello " << name << " Welcome to San Diego\n";
-        goto mainmenu;
+        goto playerselect;
     }else{
         cout << "Was " << startcity <<" one of the options? I dont think so.\nTry Again: ";
         goto cityselect;
     }
+playerselect:
+    system("clear");
+    cin.ignore();
+    cout << "Player Select" << "\n1.) Character 1" << "\n2.) Character 2" << "\n3.) Character 3" << "\n4.) Character 4" << "\n5.) Character 5" << "\n?: ";
+    cin >> temp;
+    if(temp == 1){
+        system("clear");
+        cin.ignore();
+        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
+        cin >> temp;
+            if(temp == 1){
+                cin.ignore();
+                turn = 1;
+                level = 1;
+                money = 200;
+                druginventory = 100;
+                health = 100;
+                debt = 5000;
+                system("clear");
+            }else if(temp == 2){
+                cin.ignore();
+                system("clear");
+                goto playerselect;
+            }else{
+                cin.ignore();
+                cout << "\nwhat the fuck does that mean?" << "Press Enter to try an actual options.";
+                cin.get();
+                goto playerselect;
+            }
+    }else if(temp == 2){
+                system("clear");
+        cin.ignore();
+        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
+        cin >> temp;
+            if(temp == 1){
+                cin.ignore();
+                turn = 1;
+                level = 1;
+                money = 200;
+                druginventory = 100;
+                health = 100;
+                debt = 5000;
+                system("clear");
+            }else if(temp == 2){
+                cin.ignore();
+                system("clear");
+                goto playerselect;
+            }else{
+                cin.ignore();
+                cout << "\nwhat the fuck does that mean?" << "Press Enter to try an actual options.";
+                cin.get();
+                goto playerselect;
+            }
+
+    }else if(temp == 3){
+                system("clear");
+        cin.ignore();
+        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
+        cin >> temp;
+            if(temp == 1){
+                cin.ignore();
+                turn = 1;
+                level = 1;
+                money = 200;
+                druginventory = 100;
+                health = 100;
+                debt = 5000;
+                system("clear");
+            }else if(temp == 2){
+                cin.ignore();
+                system("clear");
+                goto playerselect;
+            }else{
+                cin.ignore();
+                cout << "\nwhat the fuck does that mean?" << "Press Enter to try an actual options.";
+                cin.get();
+                goto playerselect;
+            }
+
+    }else if(temp == 4){
+                system("clear");
+        cin.ignore();
+        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
+        cin >> temp;
+            if(temp == 1){
+                cin.ignore();
+                turn = 1;
+                level = 1;
+                money = 200;
+                druginventory = 100;
+                health = 100;
+                debt = 5000;
+                system("clear");
+            }else if(temp == 2){
+                cin.ignore();
+                system("clear");
+                goto playerselect;
+            }else{
+                cin.ignore();
+                cout << "\nwhat the fuck does that mean?" << "Press Enter to try an actual options.";
+                cin.get();
+                goto playerselect;
+            }
+
+    }else if(temp == 5){
+                system("clear");
+        cin.ignore();
+        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
+        cin >> temp;
+            if(temp == 1){
+                cin.ignore();
+                turn = 1;
+                level = 1;
+                money = 200;
+                druginventory = 100;
+                health = 100;
+                debt = 5000;
+                system("clear");
+            }else if(temp == 2){
+                cin.ignore();
+                system("clear");
+                goto playerselect;
+            }else{
+                cin.ignore();
+                cout << "\nwhat the fuck does that mean?" << "Press Enter to try an actual options.";
+                cin.get();
+                goto playerselect;
+            }
+
+    }else{
+        cin.ignore();
+        cout << "\nBitch what the fuck are you talking about." << "\n" << "Press enter to continue";
+        cin.get();
+
+    }
+
 mainmenu: //This is our main player menu.
     system("clear");
     cout << "Turn: " << turn << "\n" << "Select an Option\n" << "1.) Player Stats\n" << "2.) Buy Drugs\n" << "3.) Review Your Inventory\n" << "4.) Gun Store\n" << "5.) Change Location\n" << "6.) Buy Supplies\n" << "7.) Visit Loanshark\n" << "8.) Next Turn\n" << "9.) Sell Drugs\n" << "10.) Quit\n" << "?: ";
@@ -107,7 +248,7 @@ mainmenu: //This is our main player menu.
     }else if(temp == 6) { //Buy Supplies
         goto wip;
     }else if(temp == 7) { //Visit Loanshark
-        goto wip;
+        goto loanshark;
     }else if(temp == 8) { //Next Turn
         goto nextturn;
     }else if(temp == 9) { //Sell Drugs
@@ -459,7 +600,84 @@ gunstore:
         cin.get();
         goto gunstore;
     }
-    
+loanshark:
+    cin.ignore();
+    system("clear");
+    cout << "What are you here for?\n" << "1.) Pay Off My Loan\n" << "2.) Take out a Loan\n" << "3.) Go Home\n" << "?: ";
+    cin >> temp;
+    if(temp == 1) {    
+        cin.ignore();
+        system("clear");
+        cout << "Dope, you got my money?\n" << "1.) Yes\n" << "2.) No\n" << "?: ";
+        cin >> temp;
+        if (temp == 1){
+            cin.ignore();
+            system("clear");
+            cout << "\nGood how much are you paying me back?\n" << "?: ";
+            cin >> temp;
+                if(temp > money) {
+                    cin.ignore();
+                    cout << "\nWhat the fuck are you talking about. You dont have that much money\n" << "Press enter to go back";
+                    cin.get();
+                    goto loanshark;
+                }else if(temp > debt){
+                    cin.ignore();
+                    cout << "\nhey man you dont owe me that much\n" << "Press enter to continue";
+                    cin.get();
+                    goto loanshark;
+                }else{
+                    money = money - temp;
+                    debt = debt - temp;
+                    cin.ignore();
+                    cout << "It was good doing buiness with you man." << "Press Enter to Continue";
+                    cin.get();
+                    goto mainmenu;
+                }
+        }else if(temp == 2){
+            cin.ignore();
+            system("clear");
+            goto mainmenu;
+        }else{
+            cin.ignore();
+            cout << "\nWhat the fuck you talking bout willis\n?" << "Press Enter to Continue";
+            cin.get();
+            goto loanshark;
+        }
+    }else if(temp == 2){
+        system("clear");
+        cin.ignore();
+        cout << "How much money do you want?\n" << "?: ";
+        cin >> temp;
+        if(temp < 500){
+            cin.ignore();
+            cout << "Sorry Man I dont give out loans that small. Not worth my time." << "\nPress enter to continue";
+            cin.get()
+            goto loanshark;
+        }else if (temp >= (10*money) && temp < 500){
+            system("clear");
+            cin.ignore();
+            cout << "Its good doing buiness with you man.";
+            money = money + temp;
+            debt = debt + temp;
+            cout << "Money: " << money << "$\n" << "Debt: " << debt << "$\n" << "Press Enter to continue";
+            cin.get();
+            goto mainmenu;
+        }else{
+            cin.ignore();
+            cout << "\nWhat the Fuck are you talking about?" << "\nPress enter to contine.";
+            cin.get();
+            goto loanshark;
+        }
+    }else if(temp == 3){
+        system("clear");
+        cin.ignore();
+        goto mainmenu;
+    }else{
+        cin.ignore();
+        cout << "\nWhat the fuck are you talking about?" << "\nPress Enter to continue.";
+        cin.get();
+        goto loanshark;
+    }    
 nextturn:
     cin.ignore();
     system("clear");
