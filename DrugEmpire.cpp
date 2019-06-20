@@ -651,7 +651,7 @@ loanshark:
         if(temp < 500){
             cin.ignore();
             cout << "Sorry Man I dont give out loans that small. Not worth my time." << "\nPress enter to continue";
-            cin.get()
+            cin.get();
             goto loanshark;
         }else if (temp >= (10*money) && temp < 500){
             system("clear");
