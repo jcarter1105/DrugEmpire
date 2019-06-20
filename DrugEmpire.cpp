@@ -479,15 +479,13 @@ playerinventory:
     goto mainmenu;
 gunstore:
     system("clear");
-    cin.ignore();
     cout << "Welcome to Dirk's Pawnshop where the motto is...\n" << "if you lost it someone probably stole it and sold it off to here";
     cout << "\n";
     cout << "Money: $" << money << "\nWeapon Inventory: " << weaponinventory;
-    cout << "\n1.) Switchblade: $" << 20 << "\n2.) Handgun: $" << 500 << "\n3.) AR-15: $" << 5000 << "\n4.) Grenade Launcher: $" << 20000;
+    cout << "\n1.) Switchblade: $" << 20 << "\n2.) Handgun: $" << 500 << "\n3.) AR-15: $" << 5000 << "\n4.) Grenade Launcher: $" << 20000 <<"\n5.) Exit Gun Store.";
     cout << "\n";
     cin >> temp;
     if(temp == 1){
-        system("clear");
         if (weaponinventory > 0){
             cin.ignore();
             cout << "\nYou already have a better weapon equiped\n" << "Press Enter to Continue";
@@ -506,10 +504,10 @@ gunstore:
                 weaponinventory = 1;
                 damage = 20;
                 cin.get();
+                goto gunstore;
             }
         }                 
     }else if(temp == 2){
-        system("clear");
         if (weaponinventory > 1){
             cin.ignore();
             cout << "\nYou already have a better weapon equiped" << "\nPress Enter to Continue";
@@ -533,10 +531,10 @@ gunstore:
                 weaponinventory = 2;
                 damage = 50;
                 cin.get();
+                goto gunstore;
                 }
             }
     }else if (temp == 3){
-        system("clear");
         if (weaponinventory > 2){
             cin.ignore();
             cout << "\nYou already have a better weapon equiped." << "\nPress Enter to Continue.";
@@ -560,11 +558,11 @@ gunstore:
                 weaponinventory = 3;
                 damage = 500;
                 cin.get();
+                goto gunstore;
             }
         }
         
     }else if (temp == 4){
-        system("clear");
         if (weaponinventory > 3)
         {
             cin.ignore();
@@ -590,11 +588,16 @@ gunstore:
                 weaponinventory = 4;
                 damage = 10000;
                 cin.get();
+                goto gunstore;
             }
         }
     
+    }else if (temp == 5){
+        cin.ignore();
+        cout << "\nGoodbye" << "\nPress Enter to Continue.";
+        cin.get();
+        goto mainmenu;
     }else{
-        system("clear");
         cin.ignore();
         cout << "unacceptable action" <<"\nPress Enter to Continue";
         cin.get();
