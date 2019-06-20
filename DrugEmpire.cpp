@@ -37,7 +37,9 @@ int main()
     int heroininventory;
     int health;
     int damage;
-    bool fob;
+    bool fobny;
+    bool fobdc;
+    bool fobsd;
     //This is the begining of the game, or what people see when they first start our program
 start:
     system("clear");
@@ -56,6 +58,9 @@ cityselect: //This is the part that sets the first city, but the more important 
     cin >> startcity;
     if (startcity == 1) {
         startcityname = "New York";
+        fobny = true;
+        fobdc = false;
+        fobsd = false;
         srand(time(NULL));
         weed = (rand() % 100) + 1;
         acid = (rand() % 100) + 1;
@@ -67,6 +72,9 @@ cityselect: //This is the part that sets the first city, but the more important 
         goto playerselect;
     }else if(startcity == 2) {
         startcityname = "Washington DC";
+        fobdc = true;
+        fobny = false;
+        fobsd = false;
         srand(time(NULL));
         weed = (rand() % 100) + 1;
         acid = (rand() % 100) + 1;
@@ -78,6 +86,9 @@ cityselect: //This is the part that sets the first city, but the more important 
         goto playerselect;
     }else if(startcity == 3) {
         startcityname = "San Diego";
+        fobsd = true;
+        fobny = false;
+        fobdc = false;
         srand(time(NULL));
         weed = (rand() % 100) + 1;
         acid = (rand() % 100) + 1;
@@ -901,31 +912,118 @@ changelocation:
         cout << "1.) Washington DC\n" << "2.)San Diego\n" << "3.)Stay\n";
         cin >> temp;
         if(temp == 1){
-            startcityname = "Washington DC";
-            startcity = 2;
-            srand(time(NULL));
-            weed = (rand() % 100) + 1;
-            acid = (rand() % 100) + 1;
-            cocaine = (rand() % 100) + 1;
-            heroin = (rand() % 100) + 1;
-            shrooms = (rand() % 100) + 1;
-            system("clear");
-            cout << "Hello " << name << " Welcome to Washington DC!\n" <<"Press Enter to Continue.\n";
-            cin.get();
-            goto nextturn;
+            if(fobdc == true){
+                startcityname = "Washington DC";
+                startcity = 2;
+                srand(time(NULL));
+                weed = (rand() % 100) + 1;
+                acid = (rand() % 100) + 1;
+                cocaine = (rand() % 100) + 1;
+                heroin = (rand() % 100) + 1;
+                shrooms = (rand() % 100) + 1;
+                system("clear");
+                cout << "Hello " << name << " Welcome to Washington DC!\n" <<"Press Enter to Continue.\n";
+                cin.get();
+                goto nextturn;
+            }else{
+                cout << "You must first setup a FOB in this city if you would like to continue\n" << "1.)Setup FOB 5000$\n" << "2.) return to " << startcity <<"\n";
+                cin >> temp;
+                if(temp == 1){
+                    if(money >= 5000){
+                        money = money - 5000;
+                        fobdc = true;
+                        cout << "Congrats! you're now open for business in Washington DC\n";
+                        startcityname = "Washington DC";
+                        startcity = 2;
+                        srand(time(NULL));
+                        weed = (rand() % 100) + 1;
+                        acid = (rand() % 100) + 1;
+                        cocaine = (rand() % 100) + 1;
+                        heroin = (rand() % 100) + 1;
+                        shrooms = (rand() % 100) + 1;
+                        system("clear");
+                        cout << "Hello " << name << " Welcome to Washington DC!\n" <<"Press Enter to Continue.\n";
+                        cin.get();
+                        goto nextturn;
+
+                    }else{
+                        cin.ignore();
+                        cout << "Not enough money to setup FOB.\n" << "Press Enter to Continue";
+                        cin.get();
+                        goto nextturn;
+                    }
+
+                }else if (temp == 2){
+                    cin.ignore();
+                    cout << "you decided to stay...cool\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto mainmenu;
+                }else{
+                    cin.ignore();
+                    cout << "not an option\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto changelocation;
+                }
+                
+            }
+
+            
         }else if (temp == 2){
-            startcityname = "San Diego";
-            startcity = 3;
-            srand(time(NULL));
-            weed = (rand() % 100) + 1;
-            acid = (rand() % 100) + 1;
-            cocaine = (rand() % 100) + 1;
-            heroin = (rand() % 100) + 1;
-            shrooms = (rand() % 100) + 1;
-            system("clear");
-            cout << "Hello " << name << " Welcome to San Diego!\n" <<"Press Enter to Continue.\n";
-            cin.get();
-            goto nextturn;
+            if(fobsd == true){
+                startcityname = "San Diego";
+                startcity = 3;
+                srand(time(NULL));
+                weed = (rand() % 100) + 1;
+                acid = (rand() % 100) + 1;
+                cocaine = (rand() % 100) + 1;
+                heroin = (rand() % 100) + 1;
+                shrooms = (rand() % 100) + 1;
+                system("clear");
+                cout << "Hello " << name << " Welcome to San Diego!\n" <<"Press Enter to Continue.\n";
+                cin.get();
+                goto nextturn;
+            }else{
+                cout << "You must first setup a FOB in this city if you would like to continue\n" << "1.)Setup FOB 5000$\n" << "2.) return to " << startcity << "\n";
+                cin >> temp;
+                if(temp == 1){
+                    if(money >= 5000){
+                        money = money - 5000;
+                        fobdc = true;
+                        cout << "Congrats! you're now open for business in San Diego\n";
+                        startcityname = "San Diego";
+                        startcity = 3;
+                        srand(time(NULL));
+                        weed = (rand() % 100) + 1;
+                        acid = (rand() % 100) + 1;
+                        cocaine = (rand() % 100) + 1;
+                        heroin = (rand() % 100) + 1;
+                        shrooms = (rand() % 100) + 1;
+                        system("clear");
+                        cout << "Hello " << name << " Welcome to San Diego!\n" <<"Press Enter to Continue.\n";
+                        cin.get();
+                        goto nextturn;
+
+                    }else{
+                        cin.ignore();
+                        cout << "Not enough money to setup FOB.\n" << "Press Enter to Continue";
+                        cin.get();
+                        goto nextturn;
+                    }
+
+                }else if (temp == 2){
+                    cin.ignore();
+                    cout << "you decided to stay...cool\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto mainmenu;
+                }else{
+                    cin.ignore();
+                    cout << "not an option\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto changelocation;
+                }
+                
+            }
+            
         }else if (temp == 3){
             system("clear");
             cout << "So you decided to stay...cool\n" << "Press Enter to Continue\n";
@@ -938,35 +1036,121 @@ changelocation:
         }
         
 
-    }else if (temp == 2){
+    }else if (startcity == 2){
         cout << "1.) New York\n" << "2.)San Diego\n" << "3.)Stay\n";
         cin >> temp;
         if(temp == 1){
-            startcityname = "New York";
-            startcity = 1;
-            srand(time(NULL));
-            weed = (rand() % 100) + 1;
-            acid = (rand() % 100) + 1;
-            cocaine = (rand() % 100) + 1;
-            heroin = (rand() % 100) + 1;
-            shrooms = (rand() % 100) + 1;
-            system("clear");
-            cout << "Hello " << name << " Welcome to New York!\n" <<"Press Enter to Continue.\n";
-            cin.get();
-            goto nextturn;
+            if(fobny == true){
+                startcityname = "New York";
+                startcity = 1;
+                srand(time(NULL));
+                weed = (rand() % 100) + 1;
+                acid = (rand() % 100) + 1;
+                cocaine = (rand() % 100) + 1;
+                heroin = (rand() % 100) + 1;
+                shrooms = (rand() % 100) + 1;
+                system("clear");
+                cout << "Hello " << name << " Welcome to New York!\n" <<"Press Enter to Continue.\n";
+                cin.get();
+                goto nextturn;
+            }else{
+                cout << "You must first setup a FOB in this city if you would like to continue\n" << "1.)Setup FOB 5000$\n" << "2.) return to " << startcity << "\n";
+                cin >> temp;
+                if(temp == 1){
+                    if(money >= 5000){
+                        money = money - 5000;
+                        fobny = true;
+                        cout << "Congrats! you're now open for business in New York\n";
+                        startcityname = "New York";
+                        startcity = 1;
+                        srand(time(NULL));
+                        weed = (rand() % 100) + 1;
+                        acid = (rand() % 100) + 1;
+                        cocaine = (rand() % 100) + 1;
+                        heroin = (rand() % 100) + 1;
+                        shrooms = (rand() % 100) + 1;
+                        system("clear");
+                        cout << "Hello " << name << " Welcome to New York!\n" <<"Press Enter to Continue.\n";
+                        cin.get();
+                        goto nextturn;
+
+                    }else{
+                        cin.ignore();
+                        cout << "Not enough money to setup FOB.\n" << "Press Enter to Continue";
+                        cin.get();
+                        goto nextturn;
+                    }
+
+                }else if (temp == 2){
+                    cin.ignore();
+                    cout << "you decided to stay...cool\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto mainmenu;
+                }else{
+                    cin.ignore();
+                    cout << "not an option\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto changelocation;
+                }
+                
+            }
+            
         }else if (temp == 2){
-            startcityname = "San Diego";
-            startcity = 3;
-            srand(time(NULL));
-            weed = (rand() % 100) + 1;
-            acid = (rand() % 100) + 1;
-            cocaine = (rand() % 100) + 1;
-            heroin = (rand() % 100) + 1;
-            shrooms = (rand() % 100) + 1;
-            system("clear");
-            cout << "Hello " << name << " Welcome to San Diego!\n" <<"Press Enter to Continue.\n";
-            cin.get();
-            goto nextturn;
+            if(fobsd == true){
+                startcityname = "San Diego";
+                startcity = 3;
+                srand(time(NULL));
+                weed = (rand() % 100) + 1;
+                acid = (rand() % 100) + 1;
+                cocaine = (rand() % 100) + 1;
+                heroin = (rand() % 100) + 1;
+                shrooms = (rand() % 100) + 1;
+                system("clear");
+                cout << "Hello " << name << " Welcome to San Diego!\n" <<"Press Enter to Continue.\n";
+                cin.get();
+                goto nextturn;
+            }else{
+                cout << "You must first setup a FOB in this city if you would like to continue\n" << "1.)Setup FOB 5000$\n" << "2.) return to " << startcity << "\n";
+                cin >> temp;
+                if(temp == 1){
+                    if(money >= 5000){
+                        money = money - 5000;
+                        fobny = true;
+                        cout << "Congrats! you're now open for business in San Diego\n";
+                        startcityname = "San Diego";
+                        startcity = 3;
+                        srand(time(NULL));
+                        weed = (rand() % 100) + 1;
+                        acid = (rand() % 100) + 1;
+                        cocaine = (rand() % 100) + 1;
+                        heroin = (rand() % 100) + 1;
+                        shrooms = (rand() % 100) + 1;
+                        system("clear");
+                        cout << "Hello " << name << " Welcome to San Diego!\n" <<"Press Enter to Continue.\n";
+                        cin.get();
+                        goto nextturn;
+
+                    }else{
+                        cin.ignore();
+                        cout << "Not enough money to setup FOB.\n" << "Press Enter to Continue";
+                        cin.get();
+                        goto nextturn;
+                    }
+
+                }else if (temp == 2){
+                    cin.ignore();
+                    cout << "you decided to stay...cool\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto mainmenu;
+                }else{
+                    cin.ignore();
+                    cout << "not an option\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto changelocation;
+                }
+                
+
+            }
         }else if (temp == 3){
             system("clear");
             cout << "So you decided to stay...cool\n" << "Press Enter to Continue\n";
@@ -978,35 +1162,120 @@ changelocation:
             goto changelocation;
         }
 
-    }else if (temp == 3){
+    }else if (startcity == 3){
         cout << "1.) Washington DC\n" << "2.)New York\n" << "3.)Stay\n";
         cin >> temp;
         if(temp == 1){
-            startcityname = "Washington DC";
-            startcity = 2;
-            srand(time(NULL));
-            weed = (rand() % 100) + 1;
-            acid = (rand() % 100) + 1;
-            cocaine = (rand() % 100) + 1;
-            heroin = (rand() % 100) + 1;
-            shrooms = (rand() % 100) + 1;
-            system("clear");
-            cout << "Hello " << name << " Welcome to Washington DC!\n" <<"Press Enter to Continue.\n";
-            cin.get();
-            goto nextturn;
+            if(fobdc == true){
+                startcityname = "Washington DC";
+                startcity = 2;
+                srand(time(NULL));
+                weed = (rand() % 100) + 1;
+                acid = (rand() % 100) + 1;
+                cocaine = (rand() % 100) + 1;
+                heroin = (rand() % 100) + 1;
+                shrooms = (rand() % 100) + 1;
+                system("clear");
+                cout << "Hello " << name << " Welcome to Washington DC!\n" <<"Press Enter to Continue.\n";
+                cin.get();
+                goto nextturn;
+            }else{
+                cout << "You must first setup a FOB in this city if you would like to continue\n" << "1.)Setup FOB 5000$\n" << "2.) return to " << startcity << "\n";
+                cin >> temp;
+                if(temp == 1){
+                    if(money >= 5000){
+                        money = money - 5000;
+                        fobdc = true;
+                        cout << "Congrats! you're now open for business in Washington DC\n";
+                        startcityname = "Washington DC";
+                        startcity = 2;
+                        srand(time(NULL));
+                        weed = (rand() % 100) + 1;
+                        acid = (rand() % 100) + 1;
+                        cocaine = (rand() % 100) + 1;
+                        heroin = (rand() % 100) + 1;
+                        shrooms = (rand() % 100) + 1;
+                        system("clear");
+                        cout << "Hello " << name << " Welcome to Washington DC!\n" <<"Press Enter to Continue.\n";
+                        cin.get();
+                        goto nextturn;
+
+                    }else{
+                        cin.ignore();
+                        cout << "Not enough money to setup FOB.\n" << "Press Enter to Continue";
+                        cin.get();
+                        goto nextturn;
+                    }
+
+                }else if (temp == 2){
+                    cin.ignore();
+                    cout << "you decided to stay...cool\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto mainmenu;
+                }else{
+                    cin.ignore();
+                    cout << "not an option\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto changelocation;
+                }
+                
+            }
+
         }else if (temp == 2){
-            startcityname = "New York";
-            startcity = 1;
-            srand(time(NULL));
-            weed = (rand() % 100) + 1;
-            acid = (rand() % 100) + 1;
-            cocaine = (rand() % 100) + 1;
-            heroin = (rand() % 100) + 1;
-            shrooms = (rand() % 100) + 1;
-            system("clear");
-            cout << "Hello " << name << " Welcome to New York!\n" <<"Press Enter to Continue.\n";
-            cin.get();
-            goto nextturn;
+            if(fobny == true){
+                startcityname = "New York";
+                startcity = 1;
+                srand(time(NULL));
+                weed = (rand() % 100) + 1;
+                acid = (rand() % 100) + 1;
+                cocaine = (rand() % 100) + 1;
+                heroin = (rand() % 100) + 1;
+                shrooms = (rand() % 100) + 1;
+                system("clear");
+                cout << "Hello " << name << " Welcome to New York!\n" <<"Press Enter to Continue.\n";
+                cin.get();
+                goto nextturn;
+            }else{
+                cout << "You must first setup a FOB in this city if you would like to continue\n" << "1.)Setup FOB 5000$\n" << "2.) return to " << startcity << "\n";
+                cin >> temp;
+                if(temp == 1){
+                    if(money >= 5000){
+                        money = money - 5000;
+                        fobny = true;
+                        cout << "Congrats! you're now open for business in New York\n";
+                        startcityname = "New York";
+                        startcity = 1;
+                        srand(time(NULL));
+                        weed = (rand() % 100) + 1;
+                        acid = (rand() % 100) + 1;
+                        cocaine = (rand() % 100) + 1;
+                        heroin = (rand() % 100) + 1;
+                        shrooms = (rand() % 100) + 1;
+                        system("clear");
+                        cout << "Hello " << name << " Welcome to New York!\n" <<"Press Enter to Continue.\n";
+                        cin.get();
+                        goto nextturn;
+
+                    }else{
+                        cin.ignore();
+                        cout << "Not enough money to setup FOB.\n" << "Press Enter to Continue";
+                        cin.get();
+                        goto nextturn;
+                    }
+
+                }else if (temp == 2){
+                    cin.ignore();
+                    cout << "you decided to stay...cool\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto mainmenu;
+                }else{
+                    cin.ignore();
+                    cout << "not an option\n" << "Press Enter to Continue.\n";
+                    cin.get();
+                    goto changelocation;
+                }
+                
+            }
         }else if (temp == 3){
             system("clear");
             cout << "So you decided to stay...cool\n" << "Press Enter to Continue\n";
