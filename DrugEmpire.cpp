@@ -1,4 +1,4 @@
-
+//
 //
 //  Drug Empire
 //
@@ -37,6 +37,8 @@ int main()
     int heroininventory;
     int health;
     int damage;
+    int currentlocation;
+    string currentlocationname;
     //This is the begining of the game, or what people see when they first start our program
 start:
     system("clear");
@@ -55,6 +57,8 @@ cityselect: //This is the part that sets the first city, but the more important 
     cin >> startcity;
     if (startcity == 1) {
         startcityname = "New York";
+        currentlocation = 1;
+        currentlocationname= "Home";
         srand(time(NULL));
         weed = (rand() % 100) + 1;
         acid = (rand() % 100) + 1;
@@ -66,6 +70,8 @@ cityselect: //This is the part that sets the first city, but the more important 
         goto playerselect;
     }else if(startcity == 2) {
         startcityname = "Washington DC";
+        currentlocation = 1;
+        currentlocationname = "Home";
         srand(time(NULL));
         weed = (rand() % 100) + 1;
         acid = (rand() % 100) + 1;
@@ -77,6 +83,8 @@ cityselect: //This is the part that sets the first city, but the more important 
         goto playerselect;
     }else if(startcity == 3) {
         startcityname = "San Diego";
+        currentlocation = 1;
+        currentlocationname = "Home";
         srand(time(NULL));
         weed = (rand() % 100) + 1;
         acid = (rand() % 100) + 1;
@@ -228,6 +236,7 @@ playerselect:
         cin.ignore();
         cout << "\nBitch what the fuck are you talking about." << "\n" << "Press enter to continue";
         cin.get();
+        goto playerselect;
 
     }
 
@@ -244,7 +253,7 @@ mainmenu: //This is our main player menu.
     }else if(temp == 4) { //Gun Store
         goto gunstore;
     }else if(temp == 5) { //Change Location
-        goto wip;
+        goto changelocation;
     }else if(temp == 6) { //Buy Supplies
         goto wip;
     }else if(temp == 7) { //Visit Loanshark
@@ -891,4 +900,107 @@ quit:
         cin.get();
         goto quit;
     }
+
+changelocation:
+    cin.ignore();
+    system("clear");
+    cout << "Current Location: " << currentlocationname << "\n" << "Where would you like to go?\n" << "1.) Home\n" << "2.) Suburbs\n" << "3.) Ghetto\n" << "4.) Downtown\n" << "5.) Uptown\n" << "6.) Industrial District\n";
+    cin >> temp;
+    if(currentlocation == temp){
+        cin.ignore();
+        cout << "\nYou're already here dumbass." << "\nPress Enter to Continue.";
+        cin.get();
+        goto changelocation;
+    }else{
+        if(temp == 1){
+            currentlocation = 1;
+            currentlocationname = "Home";
+            srand(time(NULL));
+            weed = (rand() % 100) + 1;
+            acid = (rand() % 100) + 1;
+            cocaine = (rand() % 100) + 1;
+            heroin = (rand() % 100) + 1;
+            shrooms = (rand() % 100) + 1;
+            cout << "\nMoving to Home..." << "\n Press Enter to Continue.";
+            cin.get();
+            goto nextturn;
+
+        }else if(temp == 2){
+            currentlocation = 2;
+            currentlocationname = "Suburbs";
+            srand(time(NULL));
+            weed = (rand() % 100) + 1;
+            acid = (rand() % 100) + 1;
+            cocaine = (rand() % 100) + 1;
+            heroin = (rand() % 100) + 1;
+            shrooms = (rand() % 100) + 1;
+            cout << "\nMoving to Suburbs..." << "\n Press Enter to Continue.";
+            cin.get();
+            goto nextturn;
+
+        }else if(temp == 3){
+            currentlocation = 3;
+            currentlocationname = "Ghetto";
+            srand(time(NULL));
+            weed = (rand() % 100) + 1;
+            acid = (rand() % 100) + 1;
+            cocaine = (rand() % 100) + 1;
+            heroin = (rand() % 100) + 1;
+            shrooms = (rand() % 100) + 1;
+            cout << "\nMoving to Ghetto..." << "\n Press Enter to Continue.";
+            cin.get();
+            goto nextturn;
+
+        }else if(temp == 4){
+            currentlocation = 4;
+            currentlocationname = "Downtown";
+            srand(time(NULL));
+            weed = (rand() % 100) + 1;
+            acid = (rand() % 100) + 1;
+            cocaine = (rand() % 100) + 1;
+            heroin = (rand() % 100) + 1;
+            shrooms = (rand() % 100) + 1;
+            cout << "\nMoving to Downtown..." << "\n Press Enter to Continue.";
+            cin.get();
+            goto nextturn;
+
+        }else if(temp == 5){
+            currentlocation = 5;
+            currentlocationname = "Uptown";
+            srand(time(NULL));
+            weed = (rand() % 100) + 1;
+            acid = (rand() % 100) + 1;
+            cocaine = (rand() % 100) + 1;
+            heroin = (rand() % 100) + 1;
+            shrooms = (rand() % 100) + 1;
+            cout << "\nMoving to Uptown..." << "\n Press Enter to Continue.";
+            cin.get();
+            goto nextturn;
+
+        }else if(temp == 6){
+            currentlocation = 6;
+            currentlocationname = "Industrial District";
+            srand(time(NULL));
+            weed = (rand() % 100) + 1;
+            acid = (rand() % 100) + 1;
+            cocaine = (rand() % 100) + 1;
+            heroin = (rand() % 100) + 1;
+            shrooms = (rand() % 100) + 1;
+            cout << "\nMoving to Industrical District..." << "\n Press Enter to Continue.";
+            cin.get();
+            goto nextturn;
+
+        }else{
+            cin.ignore();
+            cout << "\nWhere do you think you're going?" << "\nPress Enter to Continue.";
+            cin.get();
+            goto changelocation;
+        }
+    }
+    
+    
+    
+    
+    
+
 }
