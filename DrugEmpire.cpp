@@ -48,10 +48,7 @@ start:
     system("clear"); 
     cout << "Hello " << name << "\n" << "Enter the number for the city would you like to start in\n" << "1.) New York City\n" << "2.) Washington DC\n" << "3.) San Diego\n";
 cityselect: //This is the part that sets the first city, but the more important part is that this is where the user gets the first variables assigned to them.
-<<<<<<< HEAD
-=======
 
->>>>>>> f6739df4c96d6ff6fdbfd57cbc0a8f178eae6a55
     cin >> startcity;
     if (startcity == 1) {
         startcityname = "New York";
@@ -275,6 +272,28 @@ playerstats:
     cout << "\n" << "\n" << "Press Enter to return to the Main Menu";
     cin.get();
     goto mainmenu;
+
+playerinventory:
+    system("clear");
+    cin.ignore();
+    cout << name << "'s Inventory\n" << "Spots left in Inventory: " << druginventory;
+    cout << "\nDrugs:\n" << "Weed: " << weedinventory << "g's\n" << "Acid: " << acidinventory << " tabs\n" << "Cocaine: " << cocaineinventory << "g's\n" << "Heroin: " << heroininventory << "g's\n" << "Shrooms: " << shroomsinventory << "g's\n";
+    cout << "\nWeapon: ";
+    if(weaponinventory == 1){
+        cout<< "Switchblade\n";
+    }else if(weaponinventory == 2){
+        cout << "Handgun\n";
+    }else if(weaponinventory == 3){
+        cout << "AR-15\n";
+    } else if(weaponinventory){
+        cout << "Grenade Launcher\n";
+    }else{
+        cout << "Unarmed\n";
+    } 
+    cout << "Press Enter to go back to the Main Menu";
+    cin.get();
+    goto mainmenu;
+
 buydrugs:
     system("clear");
     cout << "Hey little bitch. Want to buy some drugs?\n";
@@ -473,246 +492,7 @@ buydrugs:
         cin.get();
         goto buydrugs;
     }
-playerinventory:
-    system("clear");
-    cin.ignore();
-    cout << name << "'s Inventory\n" << "Spots left in Inventory: " << druginventory;
-    cout << "\nDrugs:\n" << "Weed: " << weedinventory << "g's\n" << "Acid: " << acidinventory << " tabs\n" << "Cocaine: " << cocaineinventory << "g's\n" << "Heroin: " << heroininventory << "g's\n" << "Shrooms: " << shroomsinventory << "g's\n";
-    cout << "\nWeapon: ";
-    if(weaponinventory == 1){
-        cout<< "Switchblade\n";
-    }else if(weaponinventory == 2){
-        cout << "Handgun\n";
-    }else if(weaponinventory == 3){
-        cout << "AR-15\n";
-    } else if(weaponinventory){
-        cout << "Grenade Launcher\n";
-    }else{
-        cout << "Unarmed\n";
-    } 
-    cout << "Press Enter to go back to the Main Menu";
-    cin.get();
-    goto mainmenu;
-gunstore:
-    system("clear");
-    cout << "Welcome to Dirk's Pawnshop where the motto is...\n" << "if you lost it someone probably stole it and sold it off to here";
-    cout << "\n";
-    cout << "Money: $" << money << "\nWeapon Inventory: " << weaponinventory;
-    cout << "\n1.) Switchblade: $" << 20 << "\n2.) Handgun: $" << 500 << "\n3.) AR-15: $" << 5000 << "\n4.) Grenade Launcher: $" << 20000 <<"\n5.) Exit Gun Store.";
-    cout << "\n?: ";
-    cin >> temp;
-    if(temp == 1){
-        if (weaponinventory > 0){
-            cin.ignore();
-            cout << "\nYou already have a better weapon equiped\n" << "Press Enter to Continue";
-            cin.get();
-            goto gunstore;
-        }else{
-            if(money < 20){
-                cin.ignore();
-                cout << "\nnot enough money\n" << "Press Enter to Continue";
-                cin.get();
-                goto gunstore;
-            }else{
-                cin.ignore();
-                cout << "\n Switchblade added to your inventory." <<"\n Press Enter to Continue";
-                money = money - 20;
-                weaponinventory = 1;
-                damage = 20;
-                cin.get();
-                goto gunstore;
-            }
-        }                 
-    }else if(temp == 2){
-        if (weaponinventory > 1){
-            cin.ignore();
-            cout << "\nYou already have a better weapon equiped" << "\nPress Enter to Continue";
-            cin.get();
-            goto gunstore;
-        }else if (weaponinventory == 1){      
-            cin.ignore();
-            cout << "\nYou already have a this weapon equiped" << "\nPress Enter to Continue";
-            cin.get();
-            goto gunstore;
-        }else{
-            if (money < 500){
-                cin.ignore();
-                cout << "\nnot enough money\n" << "Press Enter to Continue";
-                cin.get();
-                goto gunstore;
-            }else{
-                cin.ignore();
-                cout << "\n Handgun added to your inventory." <<"\n Press Enter to Continue";
-                money = money - 500;
-                weaponinventory = 2;
-                damage = 50;
-                cin.get();
-                goto gunstore;
-                }
-            }
-    }else if (temp == 3){
-        if (weaponinventory > 2){
-            cin.ignore();
-            cout << "\nYou already have a better weapon equiped." << "\nPress Enter to Continue.";
-            cin.get();
-            goto gunstore;
-        }else if (weaponinventory == 2){
-            cin.ignore();
-            cout << "\nYou already have a this weapon equiped." << "\nPress Enter to Continue.";
-            cin.get();
-            goto gunstore;
-        }else{
-            if (money < 5000){
-                cin.ignore();
-                cout << "\nnot enough money" << "\nPress Enter to Continue";
-                cin.get();
-                goto gunstore;
-            }else{
-                cin.ignore();
-                cout << "\n AR-15 added to your inventory." <<"\n Press Enter to Continue";
-                money = money - 5000;
-                weaponinventory = 3;
-                damage = 500;
-                cin.get();
-                goto gunstore;
-            }
-        }
-        
-    }else if (temp == 4){
-        if (weaponinventory > 3)
-        {
-            cin.ignore();
-            cout << "\nYou already have a better weapon equiped." << "\nPress Enter to Continue.";
-            cin.get();
-            goto gunstore;
-        }else if(weaponinventory == 3){
-            cin.ignore();
-            cout << "\nYou already have a this weapon equiped." << "\nPress Enter to Continue.";
-            cin.get();
-            goto gunstore;
-        }else{
-            if (money < 20000)
-            {
-                cin.ignore();
-                cout << "\nnot enough money" << "\nPress Enter to Continue.";
-                cin.get();
-                goto gunstore;
-            }else{
-                cin.ignore();
-                cout << "\n Grenade Launcher added to your inventory." <<"\n Press Enter to Continue";
-                money = money - 20000;
-                weaponinventory = 4;
-                damage = 10000;
-                cin.get();
-                goto gunstore;
-            }
-        }
-    
-    }else if (temp == 5){
-        cin.ignore();
-        cout << "\nGoodbye" << "\nPress Enter to Continue.";
-        cin.get();
-        goto mainmenu;
-    }else{
-        cin.ignore();
-        cout << "unacceptable action" <<"\nPress Enter to Continue";
-        cin.get();
-        goto gunstore;
-    }
-loanshark:
-    cin.ignore();
-    system("clear");
-    cout << "What are you here for?\n" << "1.) Pay Off My Loan\n" << "2.) Take out a Loan\n" << "3.) Go Home\n" << "?: ";
-    cin >> temp;
-    if(temp == 1) {    
-        cin.ignore();
-        system("clear");
-        cout << "Dope, you got my money?" << "\nMoney: " << money << "$" << "\nDebt: " << debt << "$" << "\n1.) Yes\n" << "2.) No\n" << "?: ";
-        cin >> temp;
-        if (temp == 1){
-            cin.ignore();
-            system("clear");
-            cout << "\nGood how much are you paying me back?" << "\nMoney: " << money << "$" << "\nDebt: " << debt << "$" << "?: ";
-            cin >> temp;
-                if(temp > money) {
-                    cin.ignore();
-                    cout << "\nWhat the fuck are you talking about. You dont have that much money\n" << "Press enter to go back";
-                    cin.get();
-                    goto loanshark;
-                }else if(temp > debt){
-                    cin.ignore();
-                    cout << "\nhey man you dont owe me that much\n" << "Press enter to continue";
-                    cin.get();
-                    goto loanshark;
-                }else{
-                    money = money - temp;
-                    debt = debt - temp;
-                    cin.ignore();
-                    cout << "It was good doing buiness with you man." << "Press Enter to Continue";
-                    cin.get();
-                    goto mainmenu;
-                }
-        }else if(temp == 2){
-            cin.ignore();
-            system("clear");
-            goto mainmenu;
-        }else{
-            cin.ignore();
-            cout << "\nWhat the fuck you talking bout willis\n?" << "Press Enter to Continue";
-            cin.get();
-            goto loanshark;
-        }
-    }else if(temp == 2){
-        system("clear");
-        cin.ignore();
-        cout << "How much money do you want?\n" << "?: ";
-        cin >> temp;
-        if(temp < 500){
-            cin.ignore();
-            cout << "Sorry Man I dont give out loans that small. Not worth my time." << "\nPress enter to continue";
-            cin.get();
-            goto loanshark;
-        }else if (temp >= (10*money) && temp < 500){
-            system("clear");
-            cin.ignore();
-            cout << "Its good doing buiness with you man.";
-            money = money + temp;
-            debt = debt + temp;
-            cout << "Money: " << money << "$\n" << "Debt: " << debt << "$\n" << "Press Enter to continue";
-            cin.get();
-            goto mainmenu;
-        }else{
-            cin.ignore();
-            cout << "\nWhat the Fuck are you talking about?" << "\nPress enter to contine.";
-            cin.get();
-            goto loanshark;
-        }
-    }else if(temp == 3){
-        system("clear");
-        cin.ignore();
-        goto mainmenu;
-    }else{
-        cin.ignore();
-        cout << "\nWhat the fuck are you talking about?" << "\nPress Enter to continue.";
-        cin.get();
-        goto loanshark;
-    }    
-nextturn:
-    cin.ignore();
-    system("clear");
-    srand(time(NULL));
-    weed = (rand()%(30-5 + 1) + 5);
-    acid = (rand()%(25-5 + 1) + 5);
-    cocaine = (rand()%(110-60 + 1) + 60);
-    heroin = (rand()%(250-50 + 1) + 50);
-    shrooms = (rand()%(40-10 + 1) + 10);
-    turn = turn + 1;
-    if(debt > 0){
-        debt = debt*1.14;
-        system("clear");
-    }else{}
-    system("clear");
-    goto mainmenu;
+
 selldrugs:
     system("clear");
     cin.ignore();
@@ -868,42 +648,211 @@ selldrugs:
       cin.get();
       goto selldrugs;
     } 
-test:
-    cin.ignore();
-    cout << (rand() % 10) + 1 << "\n";
-    cout << (rand() % 10) + 1 << "\n";
-    cout << (rand() % 10) + 1 << "\n";
-    cout << (rand() % 10) + 1 << "\n";
-    cout << (rand() % 10) + 1 << "\n";
-    cout << (rand() % 10) + 1 << "\n";
-    cout << "\n" << "\n" << "Press Enter to return to the Main Menu";
-    cin.get();
-    goto mainmenu;
-wip:
+
+gunstore:
     system("clear");
-    cin.ignore();
-    cout << "This Feature is currently not avalible. Please try again Later!\n" << "Press Enter to Continue\n";
-    cin.get();
-    goto mainmenu;
-quit:
-    cin.ignore();
-    system("clear");
-    cout << "Are you sure you want to quit?\n" << "1.) Yes\n" << "2.) No\n" << "?: ";
+    cout << "Welcome to Dirk's Pawnshop where the motto is...\n" << "if you lost it someone probably stole it and sold it off to here";
+    cout << "\n";
+    cout << "Money: $" << money << "\nWeapon Inventory: " << weaponinventory;
+    cout << "\n1.) Switchblade: $" << 20 << "\n2.) Handgun: $" << 500 << "\n3.) AR-15: $" << 5000 << "\n4.) Grenade Launcher: $" << 20000 <<"\n5.) Exit Gun Store.";
+    cout << "\n?: ";
     cin >> temp;
     if(temp == 1){
-        system("clear");
-        cout << "\nWow, of course your quitting you little bitch. Goodbye.\n\n\n\n\n\n\n";
-        exit(0);
+        if (weaponinventory > 0){
+            cin.ignore();
+            cout << "\nYou already have a better weapon equiped\n" << "Press Enter to Continue";
+            cin.get();
+            goto gunstore;
+        }else{
+            if(money < 20){
+                cin.ignore();
+                cout << "\nnot enough money\n" << "Press Enter to Continue";
+                cin.get();
+                goto gunstore;
+            }else{
+                cin.ignore();
+                cout << "\n Switchblade added to your inventory." <<"\n Press Enter to Continue";
+                money = money - 20;
+                weaponinventory = 1;
+                damage = 20;
+                cin.get();
+                goto gunstore;
+            }
+        }                 
     }else if(temp == 2){
+        if (weaponinventory > 1){
+            cin.ignore();
+            cout << "\nYou already have a better weapon equiped" << "\nPress Enter to Continue";
+            cin.get();
+            goto gunstore;
+        }else if (weaponinventory == 1){      
+            cin.ignore();
+            cout << "\nYou already have a this weapon equiped" << "\nPress Enter to Continue";
+            cin.get();
+            goto gunstore;
+        }else{
+            if (money < 500){
+                cin.ignore();
+                cout << "\nnot enough money\n" << "Press Enter to Continue";
+                cin.get();
+                goto gunstore;
+            }else{
+                cin.ignore();
+                cout << "\n Handgun added to your inventory." <<"\n Press Enter to Continue";
+                money = money - 500;
+                weaponinventory = 2;
+                damage = 50;
+                cin.get();
+                goto gunstore;
+                }
+            }
+    }else if (temp == 3){
+        if (weaponinventory > 2){
+            cin.ignore();
+            cout << "\nYou already have a better weapon equiped." << "\nPress Enter to Continue.";
+            cin.get();
+            goto gunstore;
+        }else if (weaponinventory == 2){
+            cin.ignore();
+            cout << "\nYou already have a this weapon equiped." << "\nPress Enter to Continue.";
+            cin.get();
+            goto gunstore;
+        }else{
+            if (money < 5000){
+                cin.ignore();
+                cout << "\nnot enough money" << "\nPress Enter to Continue";
+                cin.get();
+                goto gunstore;
+            }else{
+                cin.ignore();
+                cout << "\n AR-15 added to your inventory." <<"\n Press Enter to Continue";
+                money = money - 5000;
+                weaponinventory = 3;
+                damage = 500;
+                cin.get();
+                goto gunstore;
+            }
+        }
+        
+    }else if (temp == 4){
+        if (weaponinventory > 3)
+        {
+            cin.ignore();
+            cout << "\nYou already have a better weapon equiped." << "\nPress Enter to Continue.";
+            cin.get();
+            goto gunstore;
+        }else if(weaponinventory == 3){
+            cin.ignore();
+            cout << "\nYou already have a this weapon equiped." << "\nPress Enter to Continue.";
+            cin.get();
+            goto gunstore;
+        }else{
+            if (money < 20000)
+            {
+                cin.ignore();
+                cout << "\nnot enough money" << "\nPress Enter to Continue.";
+                cin.get();
+                goto gunstore;
+            }else{
+                cin.ignore();
+                cout << "\n Grenade Launcher added to your inventory." <<"\n Press Enter to Continue";
+                money = money - 20000;
+                weaponinventory = 4;
+                damage = 10000;
+                cin.get();
+                goto gunstore;
+            }
+        }
+    
+    }else if (temp == 5){
         cin.ignore();
-        cout << "\nGood Choice. You didnt look like a little bitch.\n" << "Press Enter to Return to the Mainmenu";
+        cout << "\nGoodbye" << "\nPress Enter to Continue.";
         cin.get();
         goto mainmenu;
     }else{
         cin.ignore();
-        cout << "\nGod, did you get repeatedly dropped on your head as a child??\n" << "Try to put some fucking effort into it next time\n" << "Press Enter to try again....";
+        cout << "unacceptable action" <<"\nPress Enter to Continue";
         cin.get();
-        goto quit;
+        goto gunstore;
+    }
+
+loanshark:
+    cin.ignore();
+    system("clear");
+    cout << "What are you here for?\n" << "1.) Pay Off My Loan\n" << "2.) Take out a Loan\n" << "3.) Go Home\n" << "?: ";
+    cin >> temp;
+    if(temp == 1) {    
+        cin.ignore();
+        system("clear");
+        cout << "Dope, you got my money?" << "\nMoney: " << money << "$" << "\nDebt: " << debt << "$" << "\n1.) Yes\n" << "2.) No\n" << "?: ";
+        cin >> temp;
+        if (temp == 1){
+            cin.ignore();
+            system("clear");
+            cout << "\nGood how much are you paying me back?" << "\nMoney: " << money << "$" << "\nDebt: " << debt << "$" << "?: ";
+            cin >> temp;
+                if(temp > money) {
+                    cin.ignore();
+                    cout << "\nWhat the fuck are you talking about. You dont have that much money\n" << "Press enter to go back";
+                    cin.get();
+                    goto loanshark;
+                }else if(temp > debt){
+                    cin.ignore();
+                    cout << "\nhey man you dont owe me that much\n" << "Press enter to continue";
+                    cin.get();
+                    goto loanshark;
+                }else{
+                    money = money - temp;
+                    debt = debt - temp;
+                    cin.ignore();
+                    cout << "It was good doing buiness with you man." << "Press Enter to Continue";
+                    cin.get();
+                    goto mainmenu;
+                }
+        }else if(temp == 2){
+            cin.ignore();
+            system("clear");
+            goto mainmenu;
+        }else{
+            cin.ignore();
+            cout << "\nWhat the fuck you talking bout willis\n?" << "Press Enter to Continue";
+            cin.get();
+            goto loanshark;
+        }
+    }else if(temp == 2){
+        system("clear");
+        cin.ignore();
+        cout << "How much money do you want?\n" << "?: ";
+        cin >> temp;
+        if(temp < 500){
+            cin.ignore();
+            cout << "Sorry Man I dont give out loans that small. Not worth my time." << "\nPress enter to continue";
+            cin.get();
+            goto loanshark;
+        }else if (temp >= (10*money) && temp < 500){
+            system("clear");
+            cin.ignore();
+            cout << "Its good doing buiness with you man.";
+            money = money + temp;
+            debt = debt + temp;
+            cout << "Money: " << money << "$\n" << "Debt: " << debt << "$\n" << "Press Enter to continue";
+            cin.get();
+            goto mainmenu;
+        }else{
+            cin.ignore();
+            cout << "\nWhat the Fuck are you talking about?" << "\nPress enter to contine.";
+            cin.get();
+            goto loanshark;
+        }
+    }else if(temp == 3){
+        system("clear");
+        cin.ignore();
+        goto mainmenu;
+    }else{
+        cin.ignore();
+        cout << "\nWhat the fuck are you talking about?" << "\nPress Enter to continue.";
+        cin.get();
+        goto loanshark;
     }
 
 changelocation:
@@ -971,7 +920,66 @@ changelocation:
             goto changelocation;
         }
     }
+
+
     
+nextturn:
+    cin.ignore();
+    system("clear");
+    srand(time(NULL));
+    weed = (rand()%(30-5 + 1) + 5);
+    acid = (rand()%(25-5 + 1) + 5);
+    cocaine = (rand()%(110-60 + 1) + 60);
+    heroin = (rand()%(250-50 + 1) + 50);
+    shrooms = (rand()%(40-10 + 1) + 10);
+    turn = turn + 1;
+    if(debt > 0){
+        debt = debt*1.14;
+        system("clear");
+    }else{}
+    system("clear");
+    goto mainmenu;
+
+quit:
+    cin.ignore();
+    system("clear");
+    cout << "Are you sure you want to quit?\n" << "1.) Yes\n" << "2.) No\n" << "?: ";
+    cin >> temp;
+    if(temp == 1){
+        system("clear");
+        cout << "\nWow, of course your quitting you little bitch. Goodbye.\n\n\n\n\n\n\n";
+        exit(0);
+    }else if(temp == 2){
+        cin.ignore();
+        cout << "\nGood Choice. You didnt look like a little bitch.\n" << "Press Enter to Return to the Mainmenu";
+        cin.get();
+        goto mainmenu;
+    }else{
+        cin.ignore();
+        cout << "\nGod, did you get repeatedly dropped on your head as a child??\n" << "Try to put some fucking effort into it next time\n" << "Press Enter to try again....";
+        cin.get();
+        goto quit;
+    }   
+test:
+    cin.ignore();
+    cout << (rand() % 10) + 1 << "\n";
+    cout << (rand() % 10) + 1 << "\n";
+    cout << (rand() % 10) + 1 << "\n";
+    cout << (rand() % 10) + 1 << "\n";
+    cout << (rand() % 10) + 1 << "\n";
+    cout << (rand() % 10) + 1 << "\n";
+    cout << "\n" << "\n" << "Press Enter to return to the Main Menu";
+    cin.get();
+    goto mainmenu;
+wip:
+    system("clear");
+    cin.ignore();
+    cout << "This Feature is currently not avalible. Please try again Later!\n" << "Press Enter to Continue\n";
+    cin.get();
+    goto mainmenu;
+
+
+
     
     
     
