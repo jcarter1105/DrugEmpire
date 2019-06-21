@@ -46,12 +46,6 @@ start:
     cout << "Please enter Your name to continue!: ";
     cin >> name;
     cout << "Hello " << name << "\n" << "Enter the number for the city would you like to start in\n" << "1.) New York City\n" << "2.) Washington DC\n" << "3.) San Diego\n";
-    turn = 1;
-    level = 1;
-    money = 200;
-    druginventory = 100;
-    health = 100;
-    debt = 1500;
 cityselect: //This is the part that sets the first city, but the more important part is that this is where the user gets the first variables assigned to them.
     cin.ignore();
     cin >> startcity;
@@ -116,7 +110,7 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
-                debt = 5000;
+                debt = 1500;
                 system("clear");
             }else if(temp == 2){
                 cin.ignore();
@@ -141,7 +135,7 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
-                debt = 5000;
+                debt = 1500;
                 system("clear");
             }else if(temp == 2){
                 cin.ignore();
@@ -167,7 +161,7 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
-                debt = 5000;
+                debt = 1500;
                 system("clear");
             }else if(temp == 2){
                 cin.ignore();
@@ -193,7 +187,7 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
-                debt = 5000;
+                debt = 1500;
                 system("clear");
             }else if(temp == 2){
                 cin.ignore();
@@ -219,7 +213,7 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
-                debt = 5000;
+                debt = 1500;
                 system("clear");
             }else if(temp == 2){
                 cin.ignore();
