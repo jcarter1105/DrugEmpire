@@ -48,7 +48,10 @@ start:
     system("clear"); 
     cout << "Hello " << name << "\n" << "Enter the number for the city would you like to start in\n" << "1.) New York City\n" << "2.) Washington DC\n" << "3.) San Diego\n";
 cityselect: //This is the part that sets the first city, but the more important part is that this is where the user gets the first variables assigned to them.
-    cin.ignore();
+<<<<<<< HEAD
+=======
+
+>>>>>>> f6739df4c96d6ff6fdbfd57cbc0a8f178eae6a55
     cin >> startcity;
     if (startcity == 1) {
         startcityname = "New York";
@@ -237,27 +240,25 @@ playerselect:
 
 mainmenu: //This is our main player menu.
     system("clear");
-    cout << "Turn: " << turn << "\n" << "Select an Option\n" << "1.) Player Stats\n" << "2.) Buy Drugs\n" << "3.) Review Your Inventory\n" << "4.) Gun Store\n" << "5.) Change Location\n" << "6.) Buy Supplies\n" << "7.) Visit Loanshark\n" << "8.) Next Turn\n" << "9.) Sell Drugs\n" << "10.) Quit\n" << "?: ";
+    cout << "Turn: " << turn << "\n" << "Select an Option\n" << "1.) Player Stats\n" << "2.) Player Inventory\n" << "3.) Buy Drugs\n" << "4.) Sell Drugs\n" << "5.) Gun Store\n" << "6.) Visit Loanshark\n" << "7.) Change Location\n" << "8.) Next Turn\n" << "9.) Quit\n" << "?: ";
     cin >> temp;
     if(temp == 1) { //Player Stats
         goto playerstats;
-    }else if(temp == 2) { //Buy Drugs
-        goto buydrugs;
-    }else if(temp == 3) { //Review Your Inventory
+    }else if(temp == 2) { //Player Inventory
         goto playerinventory;
-    }else if(temp == 4) { //Gun Store
+    }else if(temp == 3) { //Buy Drugs
+        goto buydrugs;
+    }else if(temp == 4) { //Sell Drugs
+        goto selldrugs;
+    }else if(temp == 5) { //Gun Store
         goto gunstore;
-    }else if(temp == 5) { //Change Location
-        goto changelocation;
-    }else if(temp == 6) { //Buy Supplies
-        goto wip;
-    }else if(temp == 7) { //Visit Loanshark
+    }else if(temp == 6) { //Visit Loanshark
         goto loanshark;
+    }else if(temp == 7) { //Change Location
+        goto changelocation;
     }else if(temp == 8) { //Next Turn
         goto nextturn;
-    }else if(temp == 9) { //Sell Drugs
-        goto selldrugs;
-    }else if (temp == 10) { //quit
+    }else if(temp == 9) { //Quit
         goto quit;
     }else{
         cin.ignore();
@@ -477,7 +478,7 @@ playerinventory:
     cin.ignore();
     cout << name << "'s Inventory\n" << "Spots left in Inventory: " << druginventory;
     cout << "\nDrugs:\n" << "Weed: " << weedinventory << "g's\n" << "Acid: " << acidinventory << " tabs\n" << "Cocaine: " << cocaineinventory << "g's\n" << "Heroin: " << heroininventory << "g's\n" << "Shrooms: " << shroomsinventory << "g's\n";
-    cout << "\nWeapons: ";
+    cout << "\nWeapon: ";
     if(weaponinventory == 1){
         cout<< "Switchblade\n";
     }else if(weaponinventory == 2){
@@ -498,7 +499,7 @@ gunstore:
     cout << "\n";
     cout << "Money: $" << money << "\nWeapon Inventory: " << weaponinventory;
     cout << "\n1.) Switchblade: $" << 20 << "\n2.) Handgun: $" << 500 << "\n3.) AR-15: $" << 5000 << "\n4.) Grenade Launcher: $" << 20000 <<"\n5.) Exit Gun Store.";
-    cout << "\n";
+    cout << "\n?: ";
     cin >> temp;
     if(temp == 1){
         if (weaponinventory > 0){
@@ -626,12 +627,12 @@ loanshark:
     if(temp == 1) {    
         cin.ignore();
         system("clear");
-        cout << "Dope, you got my money?\n" << "1.) Yes\n" << "2.) No\n" << "?: ";
+        cout << "Dope, you got my money?" << "\nMoney: " << money << "$" << "\nDebt: " << debt << "$" << "\n1.) Yes\n" << "2.) No\n" << "?: ";
         cin >> temp;
         if (temp == 1){
             cin.ignore();
             system("clear");
-            cout << "\nGood how much are you paying me back?\n" << "?: ";
+            cout << "\nGood how much are you paying me back?" << "\nMoney: " << money << "$" << "\nDebt: " << debt << "$" << "?: ";
             cin >> temp;
                 if(temp > money) {
                     cin.ignore();
@@ -908,7 +909,7 @@ quit:
 changelocation:
     cin.ignore();
     system("clear");
-    cout << "Current Location: " << currentlocationname << "\n" << "Where would you like to go?\n" << "1.) Home\n" << "2.) Suburbs\n" << "3.) Ghetto\n" << "4.) Downtown\n" << "5.) Uptown\n" << "6.) Industrial District\n";
+    cout << "Current Location: " << currentlocationname << "\n" << "Where would you like to go?\n" << "1.) Home\n" << "2.) Suburbs\n" << "3.) Ghetto\n" << "4.) Downtown\n" << "5.) Uptown\n" << "6.) Industrial District\n" << "7.) Main Menu\n" <<"?: ";
     cin >> temp;
     if(currentlocation == temp){
         cin.ignore();
@@ -957,6 +958,11 @@ changelocation:
             cout << "\nMoving to Industrical District..." << "\n Press Enter to Continue.";
             cin.get();
             goto nextturn;
+        
+
+        }else if(temp == 7){
+            system("clear");
+            goto mainmenu;
 
         }else{
             cin.ignore();
