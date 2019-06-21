@@ -60,7 +60,7 @@ cityselect: //This is the part that sets the first city, but the more important 
         currentlocation = 1;
         currentlocationname= "Home";
         srand(time(NULL));
-        weed = (rand()%(30-5 + 1) + 30);
+        weed = (rand()%(30-5 + 1) + 5);
         acid = (rand()%(25-5 + 1) + 5);
         cocaine = (rand()%(110-60 + 1) + 60);
         heroin = (rand()%(250-50 + 1) + 50);
@@ -73,7 +73,7 @@ cityselect: //This is the part that sets the first city, but the more important 
         currentlocation = 1;
         currentlocationname = "Home";
         srand(time(NULL));
-        weed = (rand()%(30-5 + 1) + 30);
+        weed = (rand()%(30-5 + 1) + 5);
         acid = (rand()%(25-5 + 1) + 5);
         cocaine = (rand()%(110-60 + 1) + 60);
         heroin = (rand()%(250-50 + 1) + 50);
@@ -86,7 +86,7 @@ cityselect: //This is the part that sets the first city, but the more important 
         currentlocation = 1;
         currentlocationname = "Home";
         srand(time(NULL));
-        weed = (rand()%(30-5 + 1) + 30);
+        weed = (rand()%(30-5 + 1) + 5);
         acid = (rand()%(25-5 + 1) + 5);
         cocaine = (rand()%(110-60 + 1) + 60);
         heroin = (rand()%(250-50 + 1) + 50);
@@ -482,7 +482,18 @@ playerinventory:
     cin.ignore();
     cout << name << "'s Inventory\n" << "Spots left in Inventory: " << druginventory;
     cout << "\nDrugs:\n" << "Weed: " << weedinventory << "g's\n" << "Acid: " << acidinventory << " tabs\n" << "Cocaine: " << cocaineinventory << "g's\n" << "Heroin: " << heroininventory << "g's\n" << "Shrooms: " << shroomsinventory << "g's\n";
-    cout << "\nWeapons:\n"; 
+    cout << "\nWeapons: ";
+    if(weaponinventory == 1){
+        cout<< "Switchblade\n";
+    }else if(weaponinventory == 2){
+        cout << "Handgun\n";
+    }else if(weaponinventory == 3){
+        cout << "AR-15\n";
+    } else if(weaponinventory){
+        cout << "Grenade Launcher\n";
+    }else{
+        cout << "Unarmed\n";
+    } 
     cout << "Press Enter to go back to the Main Menu";
     cin.get();
     goto mainmenu;
@@ -694,7 +705,7 @@ nextturn:
     cin.ignore();
     system("clear");
     srand(time(NULL));
-    weed = (rand()%(30-5 + 1) + 30);
+    weed = (rand()%(30-5 + 1) + 5);
     acid = (rand()%(25-5 + 1) + 5);
     cocaine = (rand()%(110-60 + 1) + 60);
     heroin = (rand()%(250-50 + 1) + 50);
@@ -842,15 +853,13 @@ selldrugs:
         }else{
         cin.ignore();
         cout << "\nAwesome, you're the man! \nhere's your " << (temp * shrooms) << "$.";
-        acidinventory = (shroomsinventory - temp);
+        shroomsinventory = (shroomsinventory - temp);
         druginventory = (druginventory + temp);
         money = money + (temp * shrooms);
         cout << "Press Enter to return to the main menu";
         cin.get();
         goto mainmenu;
         }
-
-
 
       }
     }else if (temp == 6) {
