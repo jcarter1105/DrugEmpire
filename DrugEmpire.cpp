@@ -48,7 +48,7 @@ start:
     system("clear"); 
     cout << "Hello " << name << "\n" << "Enter the number for the city would you like to start in\n" << "1.) New York City\n" << "2.) Washington DC\n" << "3.) San Diego\n";
 cityselect: //This is the part that sets the first city, but the more important part is that this is where the user gets the first variables assigned to them.
-    cin.ignore();
+
     cin >> startcity;
     if (startcity == 1) {
         startcityname = "New York";
