@@ -51,7 +51,7 @@ start:
     money = 200;
     druginventory = 100;
     health = 100;
-    debt = 5000;
+    debt = 1500;
 cityselect: //This is the part that sets the first city, but the more important part is that this is where the user gets the first variables assigned to them.
     cin.ignore();
     cin >> startcity;
@@ -106,7 +106,7 @@ playerselect:
     if(temp == 1){
         system("clear");
         cin.ignore();
-        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "Player Stats" << "\nStarting Capital: 200$";
         cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
         cin >> temp;
             if(temp == 1){
@@ -131,7 +131,7 @@ playerselect:
     }else if(temp == 2){
                 system("clear");
         cin.ignore();
-        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "Player Stats" << "\nStarting Capital: 200$";
         cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
         cin >> temp;
             if(temp == 1){
@@ -157,7 +157,7 @@ playerselect:
     }else if(temp == 3){
                 system("clear");
         cin.ignore();
-        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "Player Stats" << "\nStarting Capital: 200$";
         cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
         cin >> temp;
             if(temp == 1){
@@ -183,7 +183,7 @@ playerselect:
     }else if(temp == 4){
                 system("clear");
         cin.ignore();
-        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "Player Stats" << "\nStarting Capital: 200$";
         cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
         cin >> temp;
             if(temp == 1){
@@ -209,7 +209,7 @@ playerselect:
     }else if(temp == 5){
                 system("clear");
         cin.ignore();
-        cout << "Player Stats" << "\n Starting Capital: 200$";
+        cout << "Player Stats" << "\nStarting Capital: 200$";
         cout << "\nDo you want to use this character?" << "\n1.) Yes" << "\n2.) No" << "\n?: ";
         cin >> temp;
             if(temp == 1){
@@ -375,7 +375,7 @@ buydrugs:
                 goto buydrugs;
             }else if(temp * cocaine > money){
                 cin.ignore();
-                cout << "\nNahh you cant afford that.\n " << "Press enter to continue.";
+                cout << "\nNahh you cant afford that.\n" << "Press enter to continue.";
                 cin.get();
                 goto buydrugs;
             }else if((druginventory - temp) < -1){
