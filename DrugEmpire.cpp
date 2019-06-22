@@ -17,6 +17,7 @@ int main()
     //This is where all of the varables are declared for the game
     string name;
     string startcityname;
+    string currentlocationname;
     int startcity;
     int temp;
     int turn;
@@ -38,7 +39,10 @@ int main()
     int health;
     int damage;
     int currentlocation;
-    string currentlocationname;
+    double heat;
+    double heatmodifier;
+    double combatdiffmodifier;
+    bool heataction;
     //This is the begining of the game, or what people see when they first start our program
 start:
     system("clear");
@@ -111,6 +115,10 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
+                heat = 0;
+                heataction = false;
+                heatmodifier = 1;
+                combatdiffmodifier = 1.2;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -136,6 +144,10 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
+                heat = 0;
+                heataction = false;
+                heatmodifier = 1;
+                combatdiffmodifier = 1.2;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -162,6 +174,10 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
+                heat = 0;
+                heataction = false;
+                heatmodifier = 1;
+                combatdiffmodifier = 1.2;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -188,6 +204,10 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
+                heat = 0;
+                heatmodifier = 1;
+                heataction = false;
+                combatdiffmodifier = 1.2;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -214,6 +234,10 @@ playerselect:
                 money = 200;
                 druginventory = 100;
                 health = 100;
+                heat = 0;
+                heataction = false;
+                heatmodifier = 1;
+                combatdiffmodifier = 1.2;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -238,6 +262,7 @@ playerselect:
 mainmenu: //This is our main player menu.
     system("clear");
     cout << "Turn: " << turn << "\n" << "Select an Option\n" << "1.) Player Stats\n" << "2.) Player Inventory\n" << "3.) Buy Drugs\n" << "4.) Sell Drugs\n" << "5.) Gun Store\n" << "6.) Visit Loanshark\n" << "7.) Change Location\n" << "8.) Next Turn\n" << "9.) Quit\n" << "?: ";
+    cout << "\n" << heatmodifier;
     cin >> temp;
     if(temp == 1) { //Player Stats
         goto playerstats;
@@ -268,7 +293,7 @@ mainmenu: //This is our main player menu.
 playerstats:
     system("clear");
     cin.ignore();
-    cout << "Player Stats\n" << "Name: " << name << "\n" << "Level: " << level << "\n" << "Money: " << money << "$\n" << "Debt: " << debt << "$\n" << "Starting City: " << startcityname;
+    cout << "Player Stats\n" << "Name: " << name << "\n" << "Level: " << level << "\n" << "Money: " << money <<"$\n" <<"Health: " << health << "\n" << "Debt: " << debt << "$\n" << "Heat: "<< heat << "\n" <<"Starting City: " << startcityname;
     cout << "\n" << "\n" << "Press Enter to return to the Main Menu";
     cin.get();
     goto mainmenu;
@@ -308,7 +333,7 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Acid: $" << acid << "\nSpace in inventory: " << druginventory <<"\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Acid: $" << acid << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/acid) << "\n?: ";
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
@@ -331,6 +356,8 @@ buydrugs:
                 druginventory = druginventory - temp;
                 money = money - (temp * acid);
                 acidinventory = acidinventory + temp;
+                heataction = true;
+                heat = heat + 0.2;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -344,7 +371,7 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Weed: $" << weed << "\nSpace in inventory: " << druginventory <<"\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Weed: $" << weed << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/weed) <<"\n?: ";
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
@@ -367,6 +394,8 @@ buydrugs:
                 druginventory = druginventory - temp;
                 money = money - (temp * weed);
                 weedinventory = weedinventory + temp;
+                heataction = true;
+                heat = heat + 0.2;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -381,7 +410,7 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Cocaine: $" << cocaine << "\nSpace in inventory: " << druginventory <<"\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Cocaine: $" << cocaine << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/cocaine) <<"\n?: ";
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
@@ -404,6 +433,8 @@ buydrugs:
                 druginventory = druginventory - temp;
                 money = money - (temp * cocaine);
                 cocaineinventory = cocaineinventory + temp;
+                heataction = true;
+                heat = heat + 0.2;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -417,7 +448,7 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Heroin: $" << heroin << "\nSpace in inventory: " << druginventory <<"\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Heroin: $" << heroin << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/heroin) <<"\n?: ";
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
@@ -440,6 +471,8 @@ buydrugs:
                 druginventory = druginventory - temp;
                 money = money - (temp * heroin);
                 heroininventory = heroininventory + temp;
+                heataction = true;
+                heat = heat + 0.2;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -453,7 +486,7 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Shrooms: $" << shrooms << "\nSpace in inventory: " << druginventory <<"\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Shrooms: $" << shrooms << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/shrooms) <<"\n?: ";
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
@@ -476,6 +509,8 @@ buydrugs:
                 druginventory = druginventory - temp;
                 money = money - (temp * shrooms);
                 shroomsinventory = shroomsinventory + temp;
+                heataction = true;
+                heat = heat + 0.2;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -519,6 +554,8 @@ selldrugs:
         acidinventory = (acidinventory - temp);
         druginventory = (druginventory + temp);
         money = money + (temp * acid);
+        heataction = true;
+        heat = heat + 0.2;
         cout << "\nPress Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -548,6 +585,8 @@ selldrugs:
         weedinventory = (weedinventory - temp);
         druginventory = (druginventory + temp);
         money = money + (temp * weed);
+        heataction = true;
+        heat = heat + 0.2;
         cout << "\nPress Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -576,6 +615,8 @@ selldrugs:
         cocaineinventory = (cocaineinventory - temp);
         druginventory = (druginventory + temp);
         money = money + (temp * cocaine);
+        heataction = true;
+        heat = heat + 0.2;
         cout << "\nPress Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -604,6 +645,8 @@ selldrugs:
         heroininventory = (heroininventory - temp);
         druginventory = (druginventory + temp);
         money = money + (temp * heroin);
+        heataction = true;
+        heat = heat + 0.2;
         cout << "\nPress Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -632,6 +675,8 @@ selldrugs:
         shroomsinventory = (shroomsinventory - temp);
         druginventory = (druginventory + temp);
         money = money + (temp * shrooms);
+        heataction = true;
+        heat = heat + 0.2;
         cout << "Press Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -937,6 +982,23 @@ nextturn:
         debt = debt*1.14;
         system("clear");
     }else{}
+    if(heataction == false){
+        heat = heat - 0.5;
+        if(heat >= 0.5){
+            if(heat >= 1){
+                heatmodifier = heatmodifier * heat;
+            }else{}
+        }else{
+            heat = 0;
+        }
+    }
+    else{
+        heataction = false;
+        if(heat >= 1){
+            heatmodifier = heatmodifier * heat;
+        }else{}
+        
+    }
     system("clear");
     goto mainmenu;
 
