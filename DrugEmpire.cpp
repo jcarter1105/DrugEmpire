@@ -39,9 +39,9 @@ int main()
     int health;
     int damage;
     int currentlocation;
-    double heat;
-    double heatmodifier;
-    double combatdiffmodifier;
+    int heat;
+    int heatmodifier;
+    int combatdiffmodifier;
     bool heataction;
     //This is the begining of the game, or what people see when they first start our program
 start:
@@ -118,7 +118,7 @@ playerselect:
                 heat = 0;
                 heataction = false;
                 heatmodifier = 1;
-                combatdiffmodifier = 1.2;
+                combatdiffmodifier = 1;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -147,7 +147,7 @@ playerselect:
                 heat = 0;
                 heataction = false;
                 heatmodifier = 1;
-                combatdiffmodifier = 1.2;
+                combatdiffmodifier = 1;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -177,7 +177,7 @@ playerselect:
                 heat = 0;
                 heataction = false;
                 heatmodifier = 1;
-                combatdiffmodifier = 1.2;
+                combatdiffmodifier = 1;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -207,7 +207,7 @@ playerselect:
                 heat = 0;
                 heatmodifier = 1;
                 heataction = false;
-                combatdiffmodifier = 1.2;
+                combatdiffmodifier = 1;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -237,7 +237,7 @@ playerselect:
                 heat = 0;
                 heataction = false;
                 heatmodifier = 1;
-                combatdiffmodifier = 1.2;
+                combatdiffmodifier = 1;
                 debt = 1500;
                 system("clear");
             }else if(temp == 2){
@@ -263,6 +263,7 @@ mainmenu: //This is our main player menu.
     system("clear");
     cout << "Turn: " << turn << "\n" << "Select an Option\n" << "1.) Player Stats\n" << "2.) Player Inventory\n" << "3.) Buy Drugs\n" << "4.) Sell Drugs\n" << "5.) Gun Store\n" << "6.) Visit Loanshark\n" << "7.) Change Location\n" << "8.) Next Turn\n" << "9.) Quit\n" << "?: ";
     cout << "\n" << heatmodifier;
+    cout << "\n" << heat;
     cin >> temp;
     if(temp == 1) { //Player Stats
         goto playerstats;
@@ -357,7 +358,7 @@ buydrugs:
                 money = money - (temp * acid);
                 acidinventory = acidinventory + temp;
                 heataction = true;
-                heat = heat + 0.2;
+                heat = heat + 1;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -395,7 +396,7 @@ buydrugs:
                 money = money - (temp * weed);
                 weedinventory = weedinventory + temp;
                 heataction = true;
-                heat = heat + 0.2;
+                heat = heat + 1;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -434,7 +435,7 @@ buydrugs:
                 money = money - (temp * cocaine);
                 cocaineinventory = cocaineinventory + temp;
                 heataction = true;
-                heat = heat + 0.2;
+                heat = heat + 1;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -472,7 +473,7 @@ buydrugs:
                 money = money - (temp * heroin);
                 heroininventory = heroininventory + temp;
                 heataction = true;
-                heat = heat + 0.2;
+                heat = heat + 1;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -510,7 +511,7 @@ buydrugs:
                 money = money - (temp * shrooms);
                 shroomsinventory = shroomsinventory + temp;
                 heataction = true;
-                heat = heat + 0.2;
+                heat = heat + 1;
                 cout << "\nYour Money: $" << money << "\nInventory Space: " << druginventory << "\nPress enter to buy more drugs";
                 cin.get();
                 goto buydrugs;
@@ -555,7 +556,7 @@ selldrugs:
         druginventory = (druginventory + temp);
         money = money + (temp * acid);
         heataction = true;
-        heat = heat + 0.2;
+        heat = heat + 1;
         cout << "\nPress Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -586,7 +587,7 @@ selldrugs:
         druginventory = (druginventory + temp);
         money = money + (temp * weed);
         heataction = true;
-        heat = heat + 0.2;
+        heat = heat + 1;
         cout << "\nPress Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -616,7 +617,7 @@ selldrugs:
         druginventory = (druginventory + temp);
         money = money + (temp * cocaine);
         heataction = true;
-        heat = heat + 0.2;
+        heat = heat + 1;
         cout << "\nPress Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -646,7 +647,7 @@ selldrugs:
         druginventory = (druginventory + temp);
         money = money + (temp * heroin);
         heataction = true;
-        heat = heat + 0.2;
+        heat = heat + 1;
         cout << "\nPress Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -676,7 +677,7 @@ selldrugs:
         druginventory = (druginventory + temp);
         money = money + (temp * shrooms);
         heataction = true;
-        heat = heat + 0.2;
+        heat = heat + 1;
         cout << "Press Enter to return to the main menu";
         cin.get();
         goto mainmenu;
@@ -982,22 +983,19 @@ nextturn:
         debt = debt*1.14;
         system("clear");
     }else{}
+
     if(heataction == false){
-        heat = heat - 0.5;
-        if(heat >= 0.5){
-            if(heat >= 1){
-                heatmodifier = heatmodifier * heat;
-            }else{}
+        if(heat >= 5){
+            heat = heat - 5;
+            heatmodifier = heatmodifier * heat;
         }else{
             heat = 0;
+            heatmodifier = heatmodifier - (heatmodifier/4);
         }
-    }
-    else{
-        heataction = false;
-        if(heat >= 1){
-            heatmodifier = heatmodifier * heat;
-        }else{}
         
+    }else{
+        heataction = false;
+        heatmodifier = heatmodifier * heat;
     }
     system("clear");
     goto mainmenu;
@@ -1041,10 +1039,5 @@ wip:
     goto mainmenu;
 
 
-
-    
-    
-    
-    
 
 }
