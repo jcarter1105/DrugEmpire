@@ -334,7 +334,12 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Acid: $" << acid << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/acid) << "\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Acid: $" << acid << "\nSpace in inventory: " << druginventory << "\nMax Buy: "; 
+            if(money/acid <= 100){
+                cout << money/acid << "\n?: ";
+            }else{
+                cout << druginventory << "\n?: ";
+            }
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
@@ -372,7 +377,12 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Weed: $" << weed << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/weed) <<"\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Weed: $" << weed << "\nSpace in inventory: " << druginventory << "\nMax Buy: ";
+            if(money/weed <= 100){
+                cout << money/weed << "\n?: ";
+            }else{
+                cout << druginventory << "\n?: ";
+            }
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
@@ -411,7 +421,12 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Cocaine: $" << cocaine << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/cocaine) <<"\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Cocaine: $" << cocaine << "\nSpace in inventory: " << druginventory << "\nMax Buy: ";
+            if(money/cocaine <= 100){
+                cout << money/cocaine << "\n?: ";
+            }else{
+                cout << druginventory << "\n?: ";
+            }
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
@@ -449,7 +464,12 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Heroin: $" << heroin << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/heroin) <<"\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Heroin: $" << heroin << "\nSpace in inventory: " << druginventory << "\nMax Buy: ";
+            if(money/heroin <= 100){
+                cout << money/heroin << "\n?: ";
+            }else{
+                cout << druginventory << "\n?: ";
+            }
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
@@ -487,7 +507,12 @@ buydrugs:
             goto buydrugs;
         }else{
             system("clear");
-            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Shrooms: $" << shrooms << "\nSpace in inventory: " << druginventory << "\nMax Buy: " << (money/shrooms) <<"\n?: ";
+            cout << "Dope, How much you want?\n" << "Your Money: $" << money << "\nPrice of Shrooms: $" << shrooms << "\nSpace in inventory: " << druginventory << "\nMax Buy: ";
+            if(money/shrooms <= 100){
+                cout << money/shrooms << "\n?: ";
+            }else{
+                cout << druginventory << "\n?: ";
+            }
             cin >> temp;
             if(temp == 0){
                 cin.ignore();
